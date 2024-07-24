@@ -4,21 +4,33 @@ import React from 'react';
 import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 
 const HomeView = (): React.JSX.Element => {
-  const name = 'Page ONE';
-  const numberPage = "PageFirst";
+  const name = 'John';
+  const instrument = 'Guitar';
 
   return (
     <ImageBackground 
       source={require('../../assets/images/bg.jpg')} 
       style={styles.backgroundImage}
     >
-      <View style={styles.container}>
-        <Text style={styles.text}>This is a Page!</Text>
-        <Text style={styles.text}>Page name is {name}</Text>
-        <Text style={styles.text}>{numberPage}</Text>
+      <View>
+      <Text style={styles.text}>This is the first page</Text>
+        <CharacterInfo name={name} instrument={instrument} id={1}/>
+        <Text style={styles.text}>AND</Text>
+        <CharacterInfo name={'Paul'} instrument={'Bass'} id={2}/>
       </View>
     </ImageBackground>
   );
+};
+
+const CharacterInfo = (props : any) => {
+
+    return (
+        <View>
+        <Text style={styles.text}>My name is {props.name}</Text>
+        <Text style={styles.text}>I play {props.instrument}</Text>
+        </View>
+    )
+
 };
 
 const styles = StyleSheet.create({
