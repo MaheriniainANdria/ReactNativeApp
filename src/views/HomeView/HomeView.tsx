@@ -12,32 +12,36 @@ const HomeView = (): React.JSX.Element => {
       source={require('../../assets/images/bg.jpg')} 
       style={styles.backgroundImage}
     >
-      <View>
-      <Text style={styles.text}>This is the first page</Text>
-        <CharacterInfo name={name} instrument={instrument} id={1}/>
+      <View style={styles.container}>
+        <Text style={styles.text}>This is the first page</Text>
+        <CharacterInfo name={name} instrument={instrument} />
         <Text style={styles.text}>AND</Text>
-        <CharacterInfo name={'Paul'} instrument={'Bass'} id={2}/>
+        <CharacterInfo name="Paul" instrument="Bass" />
       </View>
     </ImageBackground>
   );
 };
 
-const CharacterInfo = (props : any) => {
+// Définition du type pour les props du composant CharacterInfo
+type CharacterInfoProps = {
+  name: string;
+  instrument: string;
+};
 
-    return (
-        <View>
-        <Text style={styles.text}>My name is {props.name}</Text>
-        <Text style={styles.text}>I play {props.instrument}</Text>
-        </View>
-    )
-
+const CharacterInfo = ({ name, instrument }: CharacterInfoProps) => {
+  return (
+    <View>
+      <Text style={styles.text}>My name is {name}</Text>
+      <Text style={styles.text}>I play {instrument}</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    flex: 1, // Occupy the entire available space
-    justifyContent: 'center', // Center content vertically
-    alignItems: 'center',     // Center content horizontally
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   container: {
     flex: 1,
@@ -47,7 +51,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   text: {
-    color: '#fff', // White text color for contrast
+    color: '#fff',
     fontSize: 18,
     margin: 10,
   },
